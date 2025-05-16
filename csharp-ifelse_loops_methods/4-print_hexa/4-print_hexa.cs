@@ -7,7 +7,7 @@ class Program
         string output = "";
         for (int i = 0; i < 99; i++)
         {
-            output += $"{i} : {i:x}\n";
+            output += $"{i} = 0x{i:x}\n";
         }
         Console.Write(output);
     }
