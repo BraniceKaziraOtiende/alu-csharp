@@ -1,4 +1,3 @@
-03:50
 using System;
 
 class Program
@@ -7,9 +6,10 @@ class Program
     {
         for (int i = 0; i < 100; i++)
         {
-            Console.Write($"{i} ,");
+            if (i < 99)
+                Console.Write($"{i:00}, ");
+            else
+                Console.Write($"{i:00}\n");
         }
-
     }
 }
-Programming in C#
