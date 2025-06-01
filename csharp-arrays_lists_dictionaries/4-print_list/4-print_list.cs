@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public class ListUtils
+public class List
 {
-    public static List<int>? CreatePrint(int size)
+    public static System.Collections.Generic.List<int>? CreatePrint(int size)
     {
         if (size < 0)
         {
@@ -11,7 +11,7 @@ public class ListUtils
             return null;
         }
 
-        List<int> list = new List<int>();
+        System.Collections.Generic.List<int> list = new System.Collections.Generic.List<int>();
 
         for (int i = 0; i < size; i++)
         {
