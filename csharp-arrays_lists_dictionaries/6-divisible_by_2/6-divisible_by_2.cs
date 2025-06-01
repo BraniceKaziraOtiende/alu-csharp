@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public class List
+namespace MyUniqueNamespace
 {
-    public static System.Collections.Generic.List<bool> DivisibleBy2(System.Collections.Generic.List<int> myList)
+    public class List
     {
-        System.Collections.Generic.List<bool> result = new System.Collections.Generic.List<bool>();
-
-        foreach (int number in myList)
+        public static List<bool> DivisibleBy2(List<int> myList)
         {
-            result.Add(number % 2 == 0);
-        }
+            List<bool> result = new List<bool>();
 
-        return result;
+            foreach (int number in myList)
+            {
+                result.Add(number % 2 == 0);
+            }
+
+            return result;
+        }
     }
 }
