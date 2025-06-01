@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 public class List
 {
-    public static List<bool> DivisibleBy2(List<int> myList)
+    public static System.Collections.Generic.List<bool> DivisibleBy2(System.Collections.Generic.List<int> myList)
     {
-        List<bool> result = new List<bool>();
+        System.Collections.Generic.List<bool> result = new System.Collections.Generic.List<bool>();
 
         foreach (int number in myList)
         {
