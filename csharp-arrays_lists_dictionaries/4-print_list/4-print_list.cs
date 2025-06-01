@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public class List
+public class MyList
 {
     public static List<int>? CreatePrint(int size)
     {
