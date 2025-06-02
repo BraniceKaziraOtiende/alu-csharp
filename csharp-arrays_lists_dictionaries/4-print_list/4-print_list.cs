@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public class List
+class List
 {
-    public static System.Collections.Generic.List<int>? CreatePrint(int size)
+    public static List<int>? CreatePrint(int size)
     {
         if (size < 0)
         {
@@ -11,17 +11,17 @@ public class List
             return null;
         }
 
-        System.Collections.Generic.List<int> list = new System.Collections.Generic.List<int>();
+        List<int> newList = new List<int>();
 
         for (int i = 0; i < size; i++)
         {
-            list.Add(i);
+            newList.Add(i);
             Console.Write(i);
-            if (i < size - 1)
+            if (i != size - 1)
                 Console.Write(" ");
         }
-
         Console.WriteLine();
-        return list;
+
+        return newList;
     }
 }
