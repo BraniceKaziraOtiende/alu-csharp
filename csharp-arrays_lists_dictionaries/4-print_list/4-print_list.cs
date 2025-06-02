@@ -12,7 +12,6 @@ class List
         }
 
         List<int> newList = new List<int>();
-
         for (int i = 0; i < size; i++)
         {
             newList.Add(i);
@@ -21,7 +20,6 @@ class List
                 Console.Write(" ");
         }
         Console.WriteLine();
-
         return newList;
     }
 }
