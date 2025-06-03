@@ -5,46 +5,53 @@ public class MyStack
 {
     public static Stack<string> Info(Stack<string> aStack, string newItem, string search)
     {
-        // Print the number of items
+        // Print the number of items in the stack
         Console.WriteLine($"Number of items: {aStack.Count}");
 
-        // Print the top item or that it's empty
-        if (aStack.Count == 0)
-            Console.WriteLine("Stack is empty");
-        else
+        // Print the top item if the stack is not empty
+        if (aStack.Count > 0)
+        {
             Console.WriteLine($"Top item: {aStack.Peek()}");
+        }
+        else
+        {
+            Console.WriteLine("Stack is empty");
+        }
 
-        // Check if stack contains search item
+        // Check if the stack contains the search item
         bool containsSearch = aStack.Contains(search);
         Console.WriteLine($"Stack contains \"{search}\": {containsSearch}");
 
+        // If the search item is found, remove all items up to and including it
         if (containsSearch)
         {
-            Stack<string> newStack = new Stack<string>();
-            Stack<string> tempStack = new Stack<string>();
-            string item = aStack.Pop(); // Only Pop used once
+            // Use a list to hold the items temporarily
+            List<string> tempList = new List<string>();
+            bool found = false;
 
-            // Move items to temp stack until we find search
-            while (!item.Equals(search))
-            {
-                tempStack.Push(item);
-                item = aStack.Peek();
-                newStack.Push(aStack.Peek());
-                aStack = new Stack<string>(aStack.Skip(1));
-            }
-
-            // Return items after search back to main stack
+            // Transfer items from the stack to the list until the search item is found
             while (aStack.Count > 0)
             {
-                newStack.Push(aStack.Peek());
-                aStack = new Stack<string>(aStack.Skip(1));
+                string item = aStack.Pop(); // This is the only .Pop() used
+                if (item == search)
+                {
+                    found = true;
+                    break;
+                }
+                tempList.Add(item);
             }
 
-            aStack = newStack;
+            // Push the remaining items back to the stack in the original order
+            for (int i = tempList.Count - 1; i >= 0; i--)
+            {
+                aStack.Push(tempList[i]);
+            }
         }
 
-        // Add new item
+        // Add the new item to the stack
         aStack.Push(newItem);
+
+        // Return the modified stack
         return aStack;
     }
 }
