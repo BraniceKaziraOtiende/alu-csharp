@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public class Common
+public class LList  // ✅ Class name changed from List to LList
 {
     public static List<int> CommonElements(List<int> list1, List<int> list2)
     {
@@ -18,7 +18,7 @@ public class Common
 
         List<int> result = new List<int>(common);
 
-        // Manual bubble sort
+        // Bubble sort (no LINQ, no SortedList)
         for (int i = 0; i < result.Count - 1; i++)
         {
             for (int j = 0; j < result.Count - i - 1; j++)
