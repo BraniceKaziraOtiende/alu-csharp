@@ -1,18 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 public class LList
 {
     public static int Sum(LinkedList<int> myLList)
     {
-        int total = 0;
-        LinkedListNode<int> current = myLList.First;
-
-        while (current != null)
+        int sum = 0;
+        foreach (int num in myLList)
         {
-            total += current.Value;
-            current = current.Next;
+            sum += num;
         }
-
-        return total;
+        return sum;
     }
 }
