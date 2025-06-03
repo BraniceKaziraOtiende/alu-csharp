@@ -1,52 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public class MyQueue
+class MyQueue
 {
     public static Queue<string> Info(Queue<string> aQueue, string newItem, string search)
     {
-        // Print the number of items
-        Console.WriteLine("Number of items: " + aQueue.Count);
+        // Print number of items
+        Console.WriteLine($"Number of items: {aQueue.Count}");
 
-        // Print the first item or say it's empty
-        if (aQueue.Count == 0)
-        {
-            Console.WriteLine("Queue is empty");
-        }
+        // Print first item or "Queue is empty"
+        if (aQueue.Count > 0)
+            Console.WriteLine($"First item: {aQueue.Peek()}");
         else
-        {
-            Console.WriteLine("First item: " + aQueue.Peek());
-        }
+            Console.WriteLine("Queue is empty");
 
-        // Add newItem before modifying the queue
-        aQueue.Enqueue(newItem);
-
-        // Check if queue contains the search item
+        // Check if queue contains search item
         bool containsSearch = aQueue.Contains(search);
         Console.WriteLine($"Queue contains \"{search}\": {containsSearch}");
 
+        // If search is found, create new queue with items after search
         if (containsSearch)
         {
-            // Only one call to Dequeue is allowed
-            // We'll use Dequeue() once to enter the loop
-            Queue<string> tempQueue = new Queue<string>();
-            string item = aQueue.Dequeue(); // First and only allowed Dequeue
-            while (item != search)
-            {
-                // Don't enqueue items before search
-                item = aQueue.Dequeue();
-            }
+            Queue<string> newQueue = new Queue<string>();
+            string current = null;
+            bool foundSearch = false;
 
-            // After search is removed, move remaining items to tempQueue
             while (aQueue.Count > 0)
             {
-                tempQueue.Enqueue(aQueue.Dequeue());
+                if (!foundSearch)
+                {
+                    current = aQueue.Dequeue(); // Only Dequeue used once
+                    if (current == search)
+                        foundSearch = true;
+                }
+                else
+                {
+                    newQueue.Enqueue(aQueue.Peek());
+                    aQueue = new Queue<string>(aQueue.Skip(1));
+                }
             }
 
-            // Replace original queue
-            aQueue = tempQueue;
+            // Add newItem to the end
+            newQueue.Enqueue(newItem);
+            return newQueue;
         }
 
+        // If search not found, just add newItem
+        aQueue.Enqueue(newItem);
         return aQueue;
     }
 }
