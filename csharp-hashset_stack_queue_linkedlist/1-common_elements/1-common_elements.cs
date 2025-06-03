@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public class LList  // Renamed from 'List' to avoid conflict
+public class Common
 {
     public static List<int> CommonElements(List<int> list1, List<int> list2)
     {
