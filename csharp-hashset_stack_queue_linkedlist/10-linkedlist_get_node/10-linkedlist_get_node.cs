@@ -1,24 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 public class LList
 {
     public static int GetNode(LinkedList<int> myLList, int n)
     {
-        if (n < 0)
-            return 0;
-
-        LinkedListNode<int> current = myLList.First;
-        int index = 0;
-
-        while (current != null)
+        if (n < 0 || myLList.Count <= n)
         {
-            if (index == n)
-                return current.Value;
-
-            current = current.Next;
-            index++;
+            return 0;
         }
 
-        return 0; // n is out of range
+        LinkedListNode<int> currentNode = myLList.First;
+        for (int i = 0; i < n; i++)
+        {
+            currentNode = currentNode.Next;
+        }
+
+        return currentNode.Value;
     }
 }
