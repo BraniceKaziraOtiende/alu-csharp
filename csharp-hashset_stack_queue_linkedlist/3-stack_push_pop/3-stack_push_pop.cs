@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq; // Needed for ToList()
 
 public class MyStack
 {
@@ -21,20 +20,27 @@ public class MyStack
 
         if (containsSearch)
         {
+            Stack<string> newStack = new Stack<string>();
             Stack<string> tempStack = new Stack<string>();
-            List<string> items = aStack.ToList();
-            int searchIndex = items.FindIndex(x => x == search);
-            
-            // Use Pop() once to clear the original stack
-            aStack.Pop();
-            aStack.Clear();
+            string item = aStack.Pop(); // Only Pop used once
 
-            // Rebuild stack with remaining items
-            for (int i = items.Count - 1; i >= 0; i--)
+            // Move items to temp stack until we find search
+            while (!item.Equals(search))
             {
-                if (i > searchIndex)
-                    aStack.Push(items[i]);
+                tempStack.Push(item);
+                item = aStack.Peek();
+                newStack.Push(aStack.Peek());
+                aStack = new Stack<string>(aStack.Skip(1));
             }
+
+            // Return items after search back to main stack
+            while (aStack.Count > 0)
+            {
+                newStack.Push(aStack.Peek());
+                aStack = new Stack<string>(aStack.Skip(1));
+            }
+
+            aStack = newStack;
         }
 
         // Add new item
