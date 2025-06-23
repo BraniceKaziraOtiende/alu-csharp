@@ -13,12 +13,15 @@ public class List
             {
                 int a = list1[i];
                 int b = list2[i];
-                result.Add(a / b);
-            }
-            catch (DivideByZeroException)
-            {
-                Console.WriteLine("Cannot divide by zero");
-                result.Add(0);
+                try
+                {
+                    result.Add(a / b);
+                }
+                catch (DivideByZeroException)
+                {
+                    Console.WriteLine("Cannot divide by zero");
+                    result.Add(0);
+                }
             }
             catch (ArgumentOutOfRangeException)
             {

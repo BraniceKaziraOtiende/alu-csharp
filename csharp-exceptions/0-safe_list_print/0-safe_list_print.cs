@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public class List
+class List
 {
     public static int SafePrint(List<int> myList, int n)
     {
         int count = 0;
+
         try
         {
             for (int i = 0; i < n; i++)
@@ -16,9 +17,10 @@ public class List
         }
         catch (ArgumentOutOfRangeException)
         {
-            // The loop went past the list length — do nothing, just return count
+            // When n > myList.Count, accessing myList[i] throws this exception
+            // We just stop printing and return the count of printed elements
         }
+
         return count;
     }
-
 }
