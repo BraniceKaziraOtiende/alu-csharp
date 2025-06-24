@@ -2,19 +2,29 @@
 
 namespace Enemies
 {
-
+    /// <summary>
+    /// Defines a zombie enemy
+    /// </summary>
     public class Zombie
     {
-
+        /// <summary>
+        /// Health of the zombie
+        /// </summary>
         private int health;
 
-
+        /// <summary>
+        /// Constructor that initializes zombie health to 0
+        /// </summary>
         public Zombie()
         {
             health = 0;
         }
 
-
+        /// <summary>
+        /// Constructor that initializes zombie health to a specific value
+        /// </summary>
+        /// <param name="value">The initial health value</param>
+        /// <exception cref="ArgumentException">Thrown when value is less than 0</exception>
         public Zombie(int value)
         {
             if (value < 0)
@@ -24,6 +34,10 @@ namespace Enemies
             health = value;
         }
 
+        /// <summary>
+        /// Gets the health value of the zombie
+        /// </summary>
+        /// <returns>The current health of the zombie</returns>
         public int GetHealth()
         {
             return health;
