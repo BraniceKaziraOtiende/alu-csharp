@@ -3,17 +3,17 @@
 namespace Enemies
 {
     /// <summary>
-    /// Defines a zombie enemy
+    /// Represents a zombie enemy.
     /// </summary>
     public class Zombie
     {
         /// <summary>
-        /// Health of the zombie
+        /// Represents the health of the zombie (private).
         /// </summary>
         private int health;
 
         /// <summary>
-        /// Constructor that initializes zombie health to 0
+        /// Initializes a new instance of the Zombie class with 0 health.
         /// </summary>
         public Zombie()
         {
@@ -21,56 +21,24 @@ namespace Enemies
         }
 
         /// <summary>
-        /// Constructor that initializes zombie health to a specific value
+        /// Initializes a new instance of the Zombie class with a specified health value.
         /// </summary>
-        /// <param name="value">The initial health value</param>
-        /// <exception cref="ArgumentException">Thrown when value is less than 0</exception>
+        /// <param name="value">The initial health value of the zombie.</param>
+        /// <exception cref="ArgumentException">Thrown when value is less than 0.</exception>
         public Zombie(int value)
         {
             if (value < 0)
-            {
                 throw new ArgumentException("Health must be greater than or equal to 0");
-            }
             health = value;
         }
 
         /// <summary>
-        /// Gets the health value of the zombie
+        /// Gets the current health of the zombie.
         /// </summary>
-        /// <returns>The current health of the zombie</returns>
+        /// <returns>The health value.</returns>
         public int GetHealth()
         {
             return health;
-        }
-    }
-}
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        Enemies.Zombie newObject1;
-        Enemies.Zombie newObject2;
-
-        try
-        {
-            newObject1 = new Enemies.Zombie(10);
-            Console.WriteLine("newObject1 is of type {0} and has a total of {1} health", newObject1.GetType(), newObject1.GetHealth());
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-        }
-
-        try
-        {
-            newObject2 = new Enemies.Zombie(98);
-            Console.WriteLine("newObject2 is of type {0} and has a total of {1} health", newObject2.GetType(), newObject2.GetHealth());
-
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
         }
     }
 }

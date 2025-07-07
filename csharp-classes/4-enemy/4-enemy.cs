@@ -3,22 +3,22 @@
 namespace Enemies
 {
     /// <summary>
-    /// Defines a zombie enemy
+    /// Represents a zombie enemy.
     /// </summary>
     public class Zombie
     {
         /// <summary>
-        /// Health of the zombie
+        /// Private field for zombie's health.
         /// </summary>
         private int health;
 
         /// <summary>
-        /// Name of the zombie
+        /// Private field for zombie's name.
         /// </summary>
         private string name = "(No name)";
 
         /// <summary>
-        /// Constructor that initializes zombie health to 0
+        /// Default constructor: Initializes health to 0.
         /// </summary>
         public Zombie()
         {
@@ -26,21 +26,19 @@ namespace Enemies
         }
 
         /// <summary>
-        /// Constructor that initializes zombie health to a specific value
+        /// Constructor with health parameter.
         /// </summary>
-        /// <param name="value">The initial health value</param>
-        /// <exception cref="ArgumentException">Thrown when value is less than 0</exception>
+        /// <param name="value">Health value to initialize with.</param>
+        /// <exception cref="ArgumentException">If value is less than 0.</exception>
         public Zombie(int value)
         {
             if (value < 0)
-            {
                 throw new ArgumentException("Health must be greater than or equal to 0");
-            }
             health = value;
         }
 
         /// <summary>
-        /// Gets or sets the name of the zombie
+        /// Gets or sets the name of the zombie.
         /// </summary>
         public string Name
         {
@@ -49,43 +47,19 @@ namespace Enemies
         }
 
         /// <summary>
-        /// Gets the health value of the zombie
+        /// Returns the health of the zombie.
         /// </summary>
-        /// <returns>The current health of the zombie</returns>
         public int GetHealth()
         {
             return health;
         }
-    }
-}
 
-class Program
-{
-    static void Main(string[] args)
-    {
-        Enemies.Zombie newObject1;
-        Enemies.Zombie newObject2;
-
-        try
+        /// <summary>
+        /// Overrides ToString() to print zombie's name and health.
+        /// </summary>
+        public override string ToString()
         {
-            newObject1 = new Enemies.Zombie(10);
-            newObject1.Name = "Ed";
-            Console.WriteLine("{0} is of type {1} and has a total of {2} health", newObject1.Name, newObject1.GetType(), newObject1.GetHealth());
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-        }
-
-        try
-        {
-            newObject2 = new Enemies.Zombie(98);
-            Console.WriteLine("{0} is of type {1} and has a total of {2} health", newObject2.Name, newObject2.GetType(), newObject2.GetHealth());
-
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
+            return $"Zombie Name: {name} / Total Health: {health}";
         }
     }
 }

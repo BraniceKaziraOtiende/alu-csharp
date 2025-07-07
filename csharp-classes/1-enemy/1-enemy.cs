@@ -3,31 +3,21 @@
 namespace Enemies
 {
     /// <summary>
-    /// Defines a zombie enemy
+    /// Represents a zombie enemy.
     /// </summary>
     public class Zombie
     {
         /// <summary>
-        /// Health of the zombie
+        /// Represents the health of the zombie.
         /// </summary>
         public int health;
 
         /// <summary>
-        /// Constructor that initializes zombie health to 0
+        /// Initializes a new instance of the Zombie class with 0 health.
         /// </summary>
         public Zombie()
         {
             health = 0;
         }
-    }
-}
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        Enemies.Zombie newObject = new Enemies.Zombie();
-
-        Console.WriteLine("newObject is of type {0} and has a total of {1} health", newObject.GetType(), newObject.health);
     }
 }
